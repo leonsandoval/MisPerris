@@ -1,0 +1,69 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenidoprincipal %}
+   <section class="content">
+
+            <div class="subtitle-section">
+                <h3 class="grey-title">Contáctanos</h3>
+            </div>
+
+            <form  method="post" id="formulario" class="contacto-form" action="">
+                
+                {% csrf_token %}
+                <div class="campo">
+                    <label for="txtRun">Run</label>
+                    <div class="run" >
+                    <input type="number" class="rt" name="txtRun" id="txtRun" maxlength="8" onkeyup="this.value=Numeros(this.value)"> - <input type="text" class="dv" name="txtDV" id="txtDV" maxlength="1" onkeyup="this.value=NumText(this.value)" size="1">
+                    </div>
+                </div>
+                <div class="campo">
+                    <label for="email">Correo Electronico</label>
+                    <input type="email" name="txtMail" id="txtMail">
+                </div>
+                <div class="campo">
+                    <label for="txtNombre">Nombre Completo</label>
+                    <input type="text" name="txtNombre" id="txtNombre">
+                </div>
+
+                <div class="campo">
+                    <label for="txtNacimiento">Fecha de Nacimiento</label>
+                    <input type="date" name="txtNacimiento" id="txtNacimiento">
+                </div>
+                <div class="campo">
+                    <label for="txtFono">Teléfono de Contacto</label>
+                    <input type="number" name="txtFono" id="txtFono">
+                </div>
+                <div class="campo">
+                    <label for="">Región</label>
+                    <select id="cboRegiones" name="cboRegiones">
+                        {% comment %} <option value="">Seleccionar</option>
+                        {% for r in region %}
+                            <option value="{{  }}">{{ r.nombre }}</option>
+                        {% endfor %} {% endcomment %}
+                    </select>
+                    
+                </div>
+                <div class="campo">
+                    <label for="">Comuna</label>
+                    <select id="cboComuna" name="cboComuna"></select>
+                </div>
+                <div class="campo">
+                    <label for="">Tipo de Vivienda</label>
+                    <select name="cboVivienda" id="cboVivienda">
+                        <option value="">Seleccionar</option>
+                        <option value="1">Casa con patio grande</option>
+                        <option value="2">Casa con patio pequeño</option>
+                        <option value="3">Casa sin patio</option>
+                        <option value="4">Departamento</option>
+                    </select>
+                </div>
+               
+                <div class="btn-content">
+                    <input type="submit" value="Guardar" name="btnGuardar" id="btnGuardar">
+                </div>
+
+            </form>
+    </section>
+{% endblock contenidoprincipal %}
