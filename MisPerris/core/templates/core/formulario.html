@@ -4,7 +4,7 @@
 
 {% block contenidoprincipal %}
    <section class="content">
-
+    {% csrf_token %}
             <div class="subtitle-section">
                 <h3 class="grey-title">Contáctanos</h3>
             </div>
@@ -38,16 +38,22 @@
                 <div class="campo">
                     <label for="">Región</label>
                     <select id="cboRegiones" name="cboRegiones">
-                        {% comment %} <option value="">Seleccionar</option>
-                        {% for r in region %}
-                            <option value="{{  }}">{{ r.nombre }}</option>
-                        {% endfor %} {% endcomment %}
+                   
+                        <option value="">Seleccionar</option>
+                        {% for r in Region %}
+                            <option value="{{ r.id }}">{{ r.nombre }}</option>
+                        {% endfor %}
                     </select>
                     
                 </div>
                 <div class="campo">
                     <label for="">Comuna</label>
-                    <select id="cboComuna" name="cboComuna"></select>
+                    <select id="cboComuna" name="cboComuna">
+                        <option value="">Seleccionar</option>
+                        {% for c in Comuna %}
+                            <option value="{{ c.id }}">{{ c.nombre }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="campo">
                     <label for="">Tipo de Vivienda</label>
