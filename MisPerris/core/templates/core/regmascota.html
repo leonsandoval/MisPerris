@@ -26,8 +26,8 @@
                 </div>
                 <div class="campo">
                     <label for="rbGenero">Genero</label>
-                    <input type="radio" name="genero" id="rbGeneroM">Masculino
-                    <input type="radio" name="genero" id="rbGeneroF">Femenino
+                    <input type="radio" name="genero" id="rbGenero">Masculino
+                    <input type="radio" name="genero" id="rbGenero">Femenino
                 </div>
                 <div class="campo">
                     <label for="txtFecIngreso">Fecha de Ingreso</label>
@@ -53,6 +53,9 @@
                             <option value="{{ e.id }}">{{ e.nombre }}</option>
                         {% endfor %}
                     </select>                    
+                </div>
+                <div class="btn-content">
+                    <input type="submit" value="Guardar" name="btnGuardarM" id="btnGuardarM">
                 </div>
             </form>
 

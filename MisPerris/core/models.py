@@ -1,12 +1,18 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
 
 class Usuario(models.Model):
+    usuario = models.CharField(max_length=25)
     clave = models.CharField(max_length=25)
     pregunta_secreta = models.CharField(max_length=100)
     respuesta_secreta = models.CharField(max_length=50)
     email = models.EmailField()
+
+    def __str__(self):
+        return self.usuario
+
 
 class Persona(models.Model):
     rut = models.IntegerField()
@@ -16,11 +22,21 @@ class Persona(models.Model):
     telefono = models.IntegerField()
     direccion = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.nombre
+    
+
 class Suscripcion(models.Model):
     n_suscripcion = models.AutoField(primary_key=True)
     abono = models.IntegerField()
     fechaPago = models.DateField()
 
+    def __str__(self):
+        return self.n_suscripcion
+
+    class Meta:
+        verbose_name = "Suscripcion"
+        verbose_name_plural = "Suscripciones"    
 
 class Campania(models.Model):
     identificador = models.AutoField(primary_key=True)
@@ -29,10 +45,21 @@ class Campania(models.Model):
     fechaTermino = models.DateField()
     slogan = models.CharField(max_length=150)
 
+    def __str__(self):
+        return self.identificador
+    
+
 class Publicidad(models.Model):
     identificador = models.AutoField(primary_key=True)
-    imagen = models.ImageField()
+    imagen = models.ImageField(upload_to='publi')
     logo = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.identificador
+
+    class Meta:
+        verbose_name = "Publicidad"
+        verbose_name_plural = "Publicidad"  
 
 class Refugio(models.Model):
     identificador = models.AutoField(primary_key=True)
@@ -51,14 +78,32 @@ class Suministro(models.Model):
     fecha = models.DateField()
     tipo = models.CharField(max_length=50)
 
+class Raza(models.Model):
+    nombre = models.CharField( max_length=50)
+
+class Estado(models.Model):
+    nombre = models.CharField( max_length=50)
+
 class Mascota(models.Model):
     nombre = models.CharField(max_length=50)
-    rut_m = models.CharField(max_length=15)
-    edad = models.IntegerField()
-    raza = models.CharField(max_length=25)
-    chip = models.BooleanField()
-    n_chip = models.IntegerField()
-    tipo = models.CharField(max_length=50)
+    raza = models.ForeignKey(Raza, on_delete=models.CASCADE)
+    GENERO_RADIO = (
+        (1,'Macho'),
+        (2,'Hembra'),
+    )
+    genero = forms.ChoiceField(choices = GENERO_RADIO, widget=forms.RadioSelect())
+    fechaIngreso = models.DateField()
+    fechaNacimiento = models.DateField(null=True)
+    descripcion = models.CharField(max_length=500)
+    foto = models.ImageField(upload_to='pets')
+    estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    # rut_m = models.CharField(max_length=15)
+    # edad = models.IntegerField()
+    # raza = models.CharField(max_length=25)
+    # chip = models.BooleanField()
+    # n_chip = models.IntegerField()
+    # tipo = models.CharField(max_length=50)
+
 
 class AtencionMascota(models.Model):
     fecha = models.DateField()
@@ -444,9 +489,13 @@ class Region(models.Model):
     # , choices=NOMBRE_REGION
     )
     comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.nombre
+        
+    class Meta:
+        verbose_name = "Region"
+        verbose_name_plural = "Regiones"
+    
 
-class Raza(models.Model):
-    nombre = models.CharField( max_length=50)
+    
 
-class Estado(models.Model):
-    nombre = models.CharField( max_length=50)
