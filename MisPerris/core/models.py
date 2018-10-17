@@ -444,3 +444,9 @@ class Region(models.Model):
     # , choices=NOMBRE_REGION
     )
     comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
+
+class Raza(models.Model):
+    nombre = models.CharField( max_length=50)
+
+class Estado(models.Model):
+    nombre = models.CharField( max_length=50)

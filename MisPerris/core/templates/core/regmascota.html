@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenidoprincipal %}
+   <section class="content">
+    {% csrf_token %}
+            <div class="subtitle-section">
+                <h3 class="grey-title">Registro de Mascota</h3>
+            </div>
+
+            <form  method="post" id="formulario1" class="contacto-form" action="">
+                {% csrf_token %}
+                <div class="campo">
+                    <label for="txtNombre">Nombre</label>
+                    <input type="text" name="txtNombre" id="txtNombre">
+                </div>
+                <div class="campo">
+                    <label for="">Raza</label>
+                    <select id="cboRaza" name="cboRaza">                   
+                        <option value="">Seleccionar</option>
+                        {% for r in raza %}
+                            <option value="{{ r.id }}">{{ r.nombre }}</option>
+                        {% endfor %}
+                    </select>                    
+                </div>
+                <div class="campo">
+                    <label for="rbGenero">Genero</label>
+                    <input type="radio" name="genero" id="rbGeneroM">Masculino
+                    <input type="radio" name="genero" id="rbGeneroF">Femenino
+                </div>
+                <div class="campo">
+                    <label for="txtFecIngreso">Fecha de Ingreso</label>
+                    <input type="date" name="txtFecIngreso" id="txtFecIngreso">
+                </div>
+                <div class="campo">
+                    <label for="txtFecNacimiento">Fecha de Nacimiento</label>
+                    <input type="date" name="txtFecNacimiento" id="txtFecNacimiento">
+                </div>
+                <div class="campo">
+                    <label for="txtDescripcion">Descripcion</label>
+                    <input type="text" name="txtDescripcion" id="txtDescripcion">
+                </div>
+                <div class = "campo">
+                    <label for="imgFoto">foto</label>
+                    <input type="file" name="imgFoto" id="imgFoto" size="2mb">
+                </div>
+                <div class="campo">
+                    <label for="">Estado</label>
+                    <select id="cboEstado" name="cboEstado">                   
+                        <option value="">Seleccionar</option>
+                        {% for e in estado %}
+                            <option value="{{ e.id }}">{{ e.nombre }}</option>
+                        {% endfor %}
+                    </select>                    
+                </div>
+            </form>
+
+
+
+    </section>
+{% endblock contenidoprincipal %}

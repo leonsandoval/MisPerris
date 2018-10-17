@@ -10,3 +10,6 @@ def galeria(request):
 
 def formulario(request):
     return render(request, 'core/formulario.html')
+
+def regmascota(request):
+    return render(request, 'core/regmascota.html')
