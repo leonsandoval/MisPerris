@@ -8,23 +8,40 @@ class Usuario(models.Model):
     clave = models.CharField(max_length=25)
     pregunta_secreta = models.CharField(max_length=100)
     respuesta_secreta = models.CharField(max_length=50)
-    email = models.EmailField()
-
+    
     def __str__(self):
         return self.usuario
 
+class Comuna(models.Model):
+    nombre = models.CharField(max_length=50)
+    # nRegion = models.IntegerField()
+
+class Region(models.Model):
+    nombre = models.CharField(max_length=50)
+    comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.nombre
+    class Meta:
+        verbose_name = "Region"
+        verbose_name_plural = "Regiones"
 
 class Persona(models.Model):
     rut = models.IntegerField()
     rut_dv = models.CharField(max_length=1)
-    nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
+    email = models.EmailField( max_length=254)
+    nombreCompleto = models.CharField(max_length=150)
+    fechaNacimiento = models.DateField(auto_now=False, auto_now_add=False)
     telefono = models.IntegerField()
-    direccion = models.CharField(max_length=100)
+    region = models.ForeignKey(Region,on_delete=models.CASCADE)
+    comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
+    tipoVivienda = models.CharField( max_length=50)
+    # nombre = models.CharField(max_length=50)
+    # apellido = models.CharField(max_length=50)
+    # direccion = models.CharField(max_length=100)
 
     def __str__(self):
         return self.nombre
-    
+
 
 class Suscripcion(models.Model):
     n_suscripcion = models.AutoField(primary_key=True)
@@ -36,7 +53,7 @@ class Suscripcion(models.Model):
 
     class Meta:
         verbose_name = "Suscripcion"
-        verbose_name_plural = "Suscripciones"    
+        verbose_name_plural = "Suscripciones"
 
 class Campania(models.Model):
     identificador = models.AutoField(primary_key=True)
@@ -47,7 +64,7 @@ class Campania(models.Model):
 
     def __str__(self):
         return self.identificador
-    
+
 
 class Publicidad(models.Model):
     identificador = models.AutoField(primary_key=True)
@@ -59,7 +76,7 @@ class Publicidad(models.Model):
 
     class Meta:
         verbose_name = "Publicidad"
-        verbose_name_plural = "Publicidad"  
+        verbose_name_plural = "Publicidad"
 
 class Refugio(models.Model):
     identificador = models.AutoField(primary_key=True)
@@ -110,7 +127,7 @@ class AtencionMascota(models.Model):
     hora = models.TimeField()
     diagnostico = models.CharField(max_length=150)
 
-class Comuna(models.Model):
+# class Comuna(models.Model):
     # NOMBRE_COMUNA = (
     #     (1401,'Pozo Almonte'),
     #     (1405,'Pica'),
@@ -462,11 +479,9 @@ class Comuna(models.Model):
     #     (15101,'Arica'),
     # )
     # id = models.IntegerField(choices=NOMBRE_COMUNA, primary_key=True )
-    nombre = models.CharField(max_length=50
-    # , choices=NOMBRE_COMUNA
-    )
+    # nombre = models.CharField(max_length=50, choices=NOMBRE_COMUNA)
 
-class Region(models.Model):
+# class Region(models.Model):
     # NOMBRE_REGION = (
     #     (1,'Tarapacá'),
     #     (2,'Antofagasta'),
@@ -485,17 +500,15 @@ class Region(models.Model):
     #     (15,"Arica y Parinacota"),
     # )
     # id = models.IntegerField(choices=NOMBRE_REGION    , primary_key=True )
-    nombre = models.CharField(max_length=50
-    # , choices=NOMBRE_REGION
-    )
-    comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
-    def __str__(self):
-        return self.nombre
-        
-    class Meta:
-        verbose_name = "Region"
-        verbose_name_plural = "Regiones"
-    
+    # nombre = models.CharField(max_length=50, choices=NOMBRE_REGION)
+    # comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
+    # def __str__(self):
+        # return self.nombre
 
-    
+    # class Meta:
+    #     verbose_name = "Region"
+    #     verbose_name_plural = "Regiones"
+
+
+
 

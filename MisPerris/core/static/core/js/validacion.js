@@ -24,6 +24,7 @@ function Numeros(string){//Solo numeros
 } 
 
 
+
 $(document).ready(function() {
     $("#formularioAuto").validate({
         rules:{

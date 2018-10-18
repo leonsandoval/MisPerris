@@ -12,4 +12,6 @@ jQuery(document).ready(function(){
 
     //galeria
     $('#whatever').hoverGrid();
+
+    $("#cboRegiones").chained("#cboComuna");
 });
