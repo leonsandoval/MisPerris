@@ -25,6 +25,18 @@
                 <li><a href="/galeria">Galeria</a></li>
                 <li><a href="/formulario">Registrate</a></li>
                 <li><a href="/regmascota">Registra tu mascota</a></li>
+
+                {% if request.user.is_autenticated %}
+                <li><a href="{% %}">Cerrar Sesion</a></li>
+                {% else %}
+                <li>
+                    <a href="{% url 'login' %}"></a>
+                </li>
+                <li>
+                    <a href="{% url 'login' %}"></a>
+                </li>
+                {% endif %}
+
             </ul>
         </nav>
     </header>

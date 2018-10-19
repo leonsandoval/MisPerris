@@ -101,17 +101,20 @@ class Raza(models.Model):
 class Estado(models.Model):
     nombre = models.CharField( max_length=50)
 
-class Mascota(models.Model):
-    nombre = models.CharField(max_length=50)
-    raza = models.ForeignKey(Raza, on_delete=models.CASCADE)
-    GENERO_RADIO = (
+
+GENERO_RADIO = (
         (1,'Macho'),
         (2,'Hembra'),
     )
+
+class Mascota(models.Model):
+    nombre = models.CharField(max_length=50)
+    raza = models.ForeignKey(Raza, on_delete=models.CASCADE)
+    
     genero = forms.ChoiceField(choices = GENERO_RADIO, widget=forms.RadioSelect())
     fechaIngreso = models.DateField()
     fechaNacimiento = models.DateField(null=True)
-    descripcion = models.CharField(max_length=500)
+    descripcion = models.CharField(max_length=200)
     foto = models.ImageField(upload_to='pets')
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
     # rut_m = models.CharField(max_length=15)
