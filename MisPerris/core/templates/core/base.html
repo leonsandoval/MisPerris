@@ -12,7 +12,11 @@
     <script src="{% static 'core/js/skdslider.min.js' %}"></script>
     <link href="{% static 'core/css/skdslider.css' %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'core/css/jquery.hoverGrid.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'core/css/materialize.min.css' %}">
+    <script src="{% static 'core/js/materialize.min.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'core/css/style2.css' %}">
     <script src="{% static 'core/js/script.js' %}"></script>
 </head>
 <body>
@@ -27,15 +31,13 @@
                 <li><a href="/regmascota">Registra tu mascota</a></li>
 
                 {% if request.user.is_autenticated %}
-                <li>
-                    <a href="{% url 'logout' %}">Cerrar Sesion</a>
-                </li>
+                <li><a href="{% url 'logout'  %}">Cerrar Sesion</a></li>
                 {% else %}
                 <li>
                     <a href="{% url 'login' %}">Login</a>
                 </li>
                 <li>
-                    <a href="{% url 'register' %}">Registrate</a>
+                    <a href="{% url 'register' %}"></a>
                 </li>
                 {% endif %}
 
