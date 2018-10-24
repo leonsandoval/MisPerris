@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mis perris</title>
     {% load static %} 
-    <link href="https://fonts.googleapis.com/css?family=Exo+2|Satisfy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2|Satisfy|Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="{% static 'core/js/jquery.hoverGrid.js' %}"></script>
-    <script src="{% static 'core/js/skdslider.min.js' %}"></script>
-    <link href="{% static 'core/css/skdslider.css' %}" rel="stylesheet">
+    {% comment %} <script src="{% static 'core/js/skdslider.min.js' %}"></script>
+    <link href="{% static 'core/css/skdslider.css' %}" rel="stylesheet"> {% endcomment %}
     <link rel="stylesheet" type="text/css" href="{% static 'core/css/jquery.hoverGrid.css' %}">
 
     <link rel="stylesheet" href="{% static 'core/css/materialize.min.css' %}">
@@ -20,16 +20,21 @@
     <script src="{% static 'core/js/script.js' %}"></script>
 </head>
 <body>
+
     <header>
-        <img src="{% static 'core/img/logo.png' %}" alt="img-mis-perris" class="logo">
-        <nav class="menu">
-            <ul>
+    <nav>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+        <div class="nav-wrapper ">
+            <div class="container">
+            <a href="#" class="brand-logo">
+                <img src="{% static 'core/img/logo.png' %}" alt="img-mis-perris" class="responsive-img">
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down hide-on-small-only hide-on-med-only">
                 <li><a href="/">Inicio</a></li>
                 <li><a href="">Quienes somos</a></li>
                 <li><a href="/galeria">Galeria</a></li>
-                <!-- <li><a href="/formulario">Registrate</a></li> -->
                 <li><a href="/regmascota">Registra tu mascota</a></li>
-
                 {% if request.user.is_autenticated %}
                 <li><a href="{% url 'logout'  %}">Cerrar Sesion</a></li>
                 {% else %}
@@ -40,9 +45,28 @@
                     <a href="{% url 'register' %}"></a>
                 </li>
                 {% endif %}
-
             </ul>
+            </div>
+            </div>
         </nav>
+
+        <ul id="slide-out" class="sidenav">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="">Quienes somos</a></li>
+            <li><a href="/galeria">Galeria</a></li>
+            <li><a href="/regmascota">Registra tu mascota</a></li>
+            {% if request.user.is_autenticated %}
+            <li><a href="{% url 'logout'  %}">Cerrar Sesion</a></li>
+            {% else %}
+            <li>
+                <a href="{% url 'login' %}">Login</a>
+            </li>
+            <li>
+                <a href="{% url 'register' %}"></a>
+            </li>
+            {% endif %}
+        </ul>
+
     </header>
 
     {% block contenidoprincipal %}

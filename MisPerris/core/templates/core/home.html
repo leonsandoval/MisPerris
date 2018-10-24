@@ -1,66 +1,46 @@
-{% extends 'core/base.html' %}
+ {% extends 'core/base.html' %}
 
 {% load static %}
 
 {% block contenidoprincipal %}
+<div class="carousel carousel-slider">
+    <a class="carousel-item" href="#one!">
+        <img src="{% static 'core/img/perris/adop/Apolo.jpg' %}">
+        <div class="slide-desc hide-on-small-only hide-on-med-only">
+            <h2>Mi querido Apolo</h2>
+            <p>"Su alegría al salir al parque a correr, al tener cariño exclusivo y todos los cuidados que necesita,
+                es increíble y nos llena el corazón. Así que ahora, por fin, podemos decir que adoptamos oficialmente
+                a nuestro Apolo. En realidad, así tenía que ser, el nos encontró y nosotros a el".</p>
+        </div>
+    </a>
+    <a class="carousel-item" href="#two!">
+        <img src="{% static 'core/img/perris/adop/Duque.jpg' %}">
+        <div class="slide-desc hide-on-small-only hide-on-med-only">
+            <h2>Duque el rey del hogar </h2>
+            <p>“Yo buscaba un perro con el que dar largos paseos y salir mucho a la calle, por lo que un animal joven,
+                lleno de energía me parecía lo más adecuado. En realidad no me importaba la raza, sólo que fuera
+                cariñoso y juguetón. No sólo es todo eso, sino que está bien educado y la dueña le enseñó bastantes
+                cosas. En una semana se ha integrado en la familia perfectamente y ya es el rey de la casa y una
+                alegría cada día. A él se le nota feliz y agradecido, con ganas de vivir a tope cada momento." </p>
+        </div>
+    </a>
+    <a class="carousel-item" href="#three!">
+        <img src="{% static 'core/img/perris/adop/Tom.jpg' %}">
+         <div class="slide-desc hide-on-small-only hide-on-med-only">
+            <h2>Tom!! Tom!! Tommy!! </h2>
+            <p>"El próximo 19 de Noviembre, Tom hará dos años que está con nosotros. Siempre estaré agradecida a mi
+                hermana y a vosotros, que me disteis la oportunidad de adoptar la que es hoy una de las mejores compañías
+                que he tenido jamás. Os mando un abrazo y también alguna foto de mi pequeño."</p>
+        </div>
+    </a>
+</div>
 
-<section class="principal-content">
-    <div class="information">
-        <h1 class="phone">+56 9 98765431</h1>
-        <h2 class="text">Rescate y adopción de perros callejeros</h2>
-        <ul class="RRSS">
-            <li>
-                <img src="{% static 'core/img/socialfacebook.png' %}" alt="img-facebook">
-            </li>
-            <li>
-                <img src="{% static 'core/img/googleplus.png' %}" alt="img-plus">
-            </li>
-            <li>
-                <img src="{% static 'core/img/social-inst.png' %}" alt="img-instragram">
-            </li>
-            <li>
-                <img src="{% static 'core/img/mail.png' %}" alt="img-correo">
-            </li>
-        </ul>
-    </div>
-
-    <div id="carousel">
-        <div class="slide">
-            <img src="{% static 'core/img/perris/adop/Apolo.jpg' %}" />
-            <!--Slider Description example-->
-            <div class="slide-desc">
-                <h2>Mi querido Apolo</h2>
-                <p>"Su alegría al salir al parque a correr, al tener cariño exclusivo y todos los cuidados que necesita,
-                    es increíble y nos llena el corazón. Así que ahora, por fin, podemos decir que adoptamos oficialmente
-                    a nuestro Apolo. En realidad, así tenía que ser, el nos encontró y nosotros a el".</p>
-            </div>
-        </div>
-        <div class="slide">
-            <img src="{% static 'core/img/perris/adop/Duque.jpg' %}" />
-            <div class="slide-desc">
-                <h2>Duque el rey del hogar </h2>
-                <p>“Yo buscaba un perro con el que dar largos paseos y salir mucho a la calle, por lo que un animal joven,
-                    lleno de energía me parecía lo más adecuado. En realidad no me importaba la raza, sólo que fuera
-                    cariñoso y juguetón. No sólo es todo eso, sino que está bien educado y la dueña le enseñó bastantes
-                    cosas. En una semana se ha integrado en la familia perfectamente y ya es el rey de la casa y una
-                    alegría cada día. A él se le nota feliz y agradecido, con ganas de vivir a tope cada momento." </p>
-            </div>
-        </div>
-        <div class="slide">
-            <img src="{% static 'core/img/perris/adop/Tom.jpg' %}" />
-            <div class="slide-desc">
-                <h2>Tom!! Tom!! Tommy!! </h2>
-                <p>"El próximo 19 de Noviembre, Tom hará dos años que está con nosotros. Siempre estaré agradecida a mi
-                    hermana y a vosotros, que me disteis la oportunidad de adoptar la que es hoy una de las mejores compañías
-                    que he tenido jamás. Os mando un abrazo y también alguna foto de mi pequeño."</p>
-            </div>
-        </div>
-</section>
 {% endblock contenidoprincipal %}
 
 {% block contenido %}
-<section class="content">
-    <div class="text-box right-align">
+<section class="container">
+<div class="row">
+    <div class="col m6 s12 right-align">
         <h3>Rescate</h3>
         <h5>etapa uno
             <span class="underline"></span>
@@ -71,7 +51,7 @@
 
     <hr class="separator">
 
-    <div class="text-box left-align">
+    <div class="col m6 s12 left-align">
         <img src="{% static 'core/img/crowfunding.jpg' %}" alt="img-rescate">
         <h3>Crowdfunding</h3>
         <h5>financiamiento
@@ -82,5 +62,6 @@
 
         <button class="btn-campaign">campañas</button>
     </div>
+    </div>
 </section>
-{% endblock contenido %}
+{% endblock contenido %} 
