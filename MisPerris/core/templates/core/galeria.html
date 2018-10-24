@@ -4,6 +4,22 @@
 
 {% block contenidoprincipal %}
 
+<div class="container">
+      {% csrf_token %}
+
+    <div class="row">
+     {% for m in Mascota %}
+        <div class="col m4 s12">
+
+        <pre> {{m}} </pre>
+            <img class="responsive-img" src="{% static 'core/img/perris/resc/Maya.jpg' %}" alt="my image" title="my image" />
+
+        
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
 <section class="image-galery">
         <div class="subtitle-section">
             <h3>Tu mejor amigo</h3>
