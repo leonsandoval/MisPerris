@@ -29,9 +29,17 @@ def regmascota(request):
         mascota = Mascota()
         mascota.nombre=request.POST.get('txtNombre')
         raza = Raza()
-        raza.id = int(request.POST.get('cboRaza'))
+        raza.id = request.POST.get('cboRaza')
+        mascota.raza = raza
         mascota.genero = request.POST.get('rbGenero')
-
+        mascota.fechaIngreso= request.POST.get('txtFecIngreso')
+        mascota.fechaNacimiento = request.POST.get('txtFecNacimiento')
+        mascota.descripcion = request.POST.get('txtDescripcion')
+        mascota.foto = request.POST.get('imgFoto')
+        estado = Estado()
+        estado.id = int(request.POST.get('cboEstado'))
+        mascota.estado= estado
+        
         try:
             mascota.save()
             variables['mensaje'] = "Guardado correctamente"

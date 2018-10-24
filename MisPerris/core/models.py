@@ -15,10 +15,12 @@ class Usuario(models.Model):
 class Comuna(models.Model):
     nombre = models.CharField(max_length=50)
     # nRegion = models.IntegerField()
+    def __str__(self):
+        return self.nombre
 
 class Region(models.Model):
     nombre = models.CharField(max_length=50)
-    comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
+    # comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
     def __str__(self):
         return self.nombre
     class Meta:
@@ -97,9 +99,13 @@ class Suministro(models.Model):
 
 class Raza(models.Model):
     nombre = models.CharField( max_length=50)
+    def __str__(self):
+        return self.nombre
 
 class Estado(models.Model):
     nombre = models.CharField( max_length=50)
+    def __str__(self):
+        return self.nombre
 
 
 GENERO_RADIO = (
@@ -110,7 +116,6 @@ GENERO_RADIO = (
 class Mascota(models.Model):
     nombre = models.CharField(max_length=50)
     raza = models.ForeignKey(Raza, on_delete=models.CASCADE)
-    
     genero = forms.ChoiceField(choices = GENERO_RADIO, widget=forms.RadioSelect())
     fechaIngreso = models.DateField()
     fechaNacimiento = models.DateField(null=True)

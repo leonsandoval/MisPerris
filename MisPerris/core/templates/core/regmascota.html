@@ -20,14 +20,14 @@
                     <select id="cboRaza" name="cboRaza">                   
                         <option value="">Seleccionar</option>
                         {% for r in raza %}
-                            <option value="{{ r.id }}">{{ r.nombre }}</option>
+                            <option value="{{ r.nombre }}">{{ r.nombre }}</option>
                         {% endfor %}
                     </select>                    
                 </div>
                 <div class="campo">
                     <label for="rbGenero">Genero</label>
-                    <input type="radio" name="genero" id="rbGenero">Macho
-                    <input type="radio" name="genero" id="rbGenero">Hembra
+                    <input type="radio" name="genero" value= "1">Macho
+                    <input type="radio" name="genero" value = "2">Hembra
                 </div>
                 <div class="campo">
                     <label for="txtFecIngreso">Fecha de Ingreso</label>
@@ -57,6 +57,7 @@
                 <div class="btn-content">
                     <input type="submit" value="Guardar" name="btnGuardarM" id="btnGuardarM">
                 </div>
+                <h3>{{ mensaje }}</h3>
             </form>
 
 
