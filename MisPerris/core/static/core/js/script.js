@@ -30,6 +30,10 @@ $(document).ready(function(){
     duration: 200,
     indicators: true
   });
+  $('.datepicker').datepicker({
+    format:'dd-mm-yyyy'
+  });
+  $('select').formSelect();
 });
 
 autoplay();
