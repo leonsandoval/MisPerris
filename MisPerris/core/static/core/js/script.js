@@ -22,16 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 $(document).ready(function(){
   $('.sidenav').sidenav();
-});
-// Carousel
-$(document).ready(function(){
+  
   $('.carousel').carousel({
     fullWidth: true,
     duration: 200,
     indicators: true
   });
   $('.datepicker').datepicker({
-    format:'dd-mm-yyyy'
+    format:	'yyyy-mm-dd'
   });
   $('select').formSelect();
 });

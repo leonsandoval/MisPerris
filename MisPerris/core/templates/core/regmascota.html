@@ -13,7 +13,7 @@
         <form  method="post" id="formulario1" class="contacto-form" action="">
             {% csrf_token %}
         <div class="input-field col s12">
-          <input id="txtNombre" type="text" class="validate">
+          <input name="txtNombre" id="txtNombre" type="text" class="validate">
           <label for="txtNombre">Nombre</label>
         </div>
 
@@ -21,7 +21,7 @@
             <select id="cboRaza" name="cboRaza">
                 <option value="">Seleccionar</option>
                 {% for r in raza %}
-                    <option value="{{ r.nombre }}">{{ r.nombre }}</option>
+                    <option value="{{ r.id }}">{{ r.nombre }}</option>
                 {% endfor %}
             </select>
             <label for="cboRaza">Raza</label>
@@ -39,17 +39,17 @@
         </div>
 
         <div class="input-field col s12 m6">
-            <input type="text" class="datepicker" name="txtFecIngreso" id="txtFecIngreso">
+            <input type="date" class="datepicker" name="txtFecIngreso" id="txtFecIngreso">
             <label for="txtFecIngreso">Fecha de Ingreso</label>
         </div>
 
         <div class="input-field col s12 m6">
-            <input type="text" class="datepicker" name="txtFecNacimiento" id="txtFecNacimiento">
+            <input type="date" class="datepicker" name="txtFecNacimiento" id="txtFecNacimiento">
             <label for="txtFecNacimiento">Fecha de Nacimiento</label>
         </div>
 
         <div class="input-field col s12">
-            <textarea id="txtDescripcion" class="materialize-textarea"></textarea>
+            <textarea id="txtDescripcion" name="txtDescripcion" class="materialize-textarea"></textarea>
             <label for="txtDescripcion">Descripción</label>
         </div>
 
