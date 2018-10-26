@@ -66,7 +66,7 @@ def eliminar(request, id):
 
     #una vez encontrado el automovil se procede a eliminarlo
     try:
-        auto.delete()
+        perro.delete()
         mensaje = "Eliminado correctamente"
         messages.success(request, mensaje)
     except:
@@ -80,8 +80,8 @@ def modificar_mascota(request, id):
 
     raza = Raza.objects.all()
     estado = Estado.objects.all()
-    #buscamos el automovil en la BBDD por su ID
-    perro = Mascota.objects.get(id=id)
+   
+    mascota = Mascota.objects.get(id=id)
     variables = {
         'raza':raza,
         'estado':estado
@@ -106,7 +106,7 @@ def modificar_mascota(request, id):
 
         #ahora procederemos a actualizar el automovil
         try:
-            auto.save()
+            mascota.save()
             messages.success(request, "Actualizado correctamente")
         except:
             messages.error(request, "No se ha podido actualizar")
