@@ -1,0 +1,87 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block extrastyle %}
+<style>
+
+    #header {
+        background: rgb(133, 212, 183);
+        border-bottom: solid 3px #999;
+
+    }
+     #branding h1 a ,#branding h1 a:link, #branding h1 a:visited {
+         color: #fff;
+         font-weight: 500;
+     }
+
+     #branding h1 a img {
+            max-height: 30px;
+        margin-bottom: 7px;
+        position: relative;
+     }
+
+     #branding h1 a br {
+        display:none;
+     }
+
+     .login #header h1, .login #header h1 a {
+         text-align:center;
+         width: 370px;
+         display: block;
+     }
+     .login #header h1 a br {
+         display: block;
+     }
+     div.breadcrumbs {
+         background: rgb(133,186,160);
+     }
+     .module h2, .module caption, .inline-group h2 {
+         background: rgb(131, 181, 162);
+     }
+     a:link, a:visited {
+         color: rgb(132, 192, 169);
+     }
+
+     .button.default:active, input[type=submit].default:active, .button.default:focus, input[type=submit].default:focus, .button.default:hover, input[type=submit].default:hover {
+        background: rgb(133, 213, 183);
+     }
+
+    .button.default, input[type=submit].default, .submit-row input.default{
+                  background: rgb(133, 213, 183);
+     }
+
+    .button.default, input[type=submit].default, .submit-row input.default {
+        background: rgb(128, 138, 134);
+    }
+
+     .button, input[type=submit], input[type=button], .submit-row input, a.button {
+         background: rgb(130, 160, 148);
+     }
+     .button:active, input[type=submit]:active, input[type=button]:active, .button:focus, input[type=submit]:focus, input[type=button]:focus, .button:hover, input[type=submit]:hover, input[type=button]:hover {
+         background: rgb(132, 202, 176);
+     }
+        /* Tonos de verde
+        rgb(133, 213, 183)
+        rgb(132, 202, 176)
+        rgb(132, 192, 169)
+        rgb(131, 181, 162)
+        rgb(130, 170, 155)
+        rgb(130, 160, 148)
+        rgb(129, 149, 141)
+        rgb(128, 138, 134)*/
+</style>
+{% endblock extrastyle %}
+
+
+{% block branding %}
+<h1 id="site-name">
+{% load static %}
+<a href="{% url 'admin:index' %}">
+    <img src="{% static 'core/img/logo.png' %}" alt="img-mis-perris" class="responsive-img">
+<br>
+{{ site_header|default:_('Django administration') }}</a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
