@@ -36,12 +36,13 @@
                 {% if request.user.is_autenticated %}
                 <li><a href="{% url 'logout'  %}">Cerrar Sesion</a></li>
                 {% else %}
+                 <li>
+                    <a href="{% url 'register' %}"> Registrate</a>
+                </li>
                 <li>
                     <a href="{% url 'login' %}">Login</a>
                 </li>
-                <li>
-                    <a href="{% url 'register' %}"></a>
-                </li>
+               
                 {% endif %}
             </ul>
             </div>

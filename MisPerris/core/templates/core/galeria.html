@@ -8,11 +8,8 @@
     <div class="row">
 
      {% for m in adoptados %}
-     HOLA
-        <div class="col m4 s12">
- <pre id="{{ m.id }}">  </pre>
-        
-            <img class="responsive-img" src="{% static 'core/img/perris/resc/Maya.jpg' %}" alt="my image" title="my image" />
+        <div class="col m4 s12">        
+            <img class="responsive-img" src="{% static 'core/img/perris/resc/' %}{{m.foto}}" alt="my image" title="my image" />
         </div>
     {% endfor %}
     </div>

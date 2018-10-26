@@ -7,7 +7,11 @@ def home(request):
     return render(request, 'core/home.html')
 
 def galeria(request):
-    return render(request, 'core/galeria.html')    
+    perros = Mascota.objects.filter(estado=1)
+    return render(request, 'core/galeria.html', 
+    {
+    'adoptados':perros
+    })    
 
 def formulario(request): 
     region = Region.objects.all()
@@ -48,11 +52,6 @@ def regmascota(request):
             variables['mensaje'] = "No se ha podido guardar"
     return render(request, 'core/regmascota.html',variables)
 
-def listadoAdoptado(request):
-    adoptados = Mascota.objects.all()
 
-    return render( request, 'core/galeria.html', {
-        'adoptado': adoptados
-    })
 
 
