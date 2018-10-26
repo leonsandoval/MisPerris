@@ -88,3 +88,7 @@ nav {
 .separator {
     display: none;
 }
+
+.mtop100 {
+    margin-top: 70px;
+}

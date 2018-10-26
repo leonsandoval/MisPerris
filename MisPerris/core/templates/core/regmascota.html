@@ -13,7 +13,7 @@
         <form  method="post" id="formulario1" class="contacto-form" action="">
             {% csrf_token %}
         <div class="input-field col s12">
-          <input name="txtNombre" id="txtNombre" type="text" class="validate">
+          <input name="txtNombre" id="txtNombre" type="text" class="validate" maxlength="50">
           <label for="txtNombre">Nombre</label>
         </div>
 
@@ -49,7 +49,7 @@
         </div>
 
         <div class="input-field col s12">
-            <textarea id="txtDescripcion" name="txtDescripcion" class="materialize-textarea"></textarea>
+            <textarea id="txtDescripcion" name="txtDescripcion" class="materialize-textarea" maxlength="200"></textarea>
             <label for="txtDescripcion">Descripción</label>
         </div>
 

@@ -116,7 +116,8 @@ GENERO_RADIO = (
 class Mascota(models.Model):
     nombre = models.CharField(max_length=50)
     raza = models.ForeignKey(Raza, on_delete=models.CASCADE)
-    genero = forms.ChoiceField(choices = GENERO_RADIO, widget=forms.RadioSelect())
+    genero = models.CharField(max_length= 50 ,choices=GENERO_RADIO)
+    #forms.ChoiceField(choices = GENERO_RADIO, widget=forms.RadioSelect())
     fechaIngreso = models.DateField()
     fechaNacimiento = models.DateField(null=True)
     descripcion = models.CharField(max_length=200)

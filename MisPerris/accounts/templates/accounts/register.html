@@ -1,21 +1,28 @@
 {% extends 'core/base.html' %}
 
 {% load static %}
-
 {% block contenidoprincipal %}
+<div class="container">
+    <div class="row">
+        <div class="col s12 m8 offset-m2 mtop100">
+            <h5>Registro de Usuario</h5>
 
-    <h2>Registro de Usuario</h2>
+            <section class="contacto-form">
+                <form action="" method="post">
+                    {% csrf_token %}
 
-    <section class="contacto-form">
-        <form action="" method="post">
-            {% csrf_token %}
+                    {{form.as_p}}
 
-            {{form.as_p}}
-            <input type="submit" value="Registrar">
+                    <button class="btn waves-effect waves-light col s12 m4" type="submit" name="Registrar" id="Registrar">Registrar
+                        <i class="account_circle right"></i>
+                    </button>
 
-        </form>
-    </section>
-<div>
-        {{mensaje}}
+                </form>
+            </section>
+            <div>
+            {{mensaje}}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock contenidoprincipal %}

@@ -31,7 +31,9 @@ def regmascota(request):
         raza = Raza()
         raza.id = request.POST.get('cboRaza')
         mascota.raza = raza
-        mascota.genero = request.POST.get('rbGenero')
+        genero = request.POST.get('rbGenero')
+        print( genero )
+        mascota.genero = genero
         mascota.fechaIngreso= request.POST.get('txtFecIngreso')
         mascota.fechaNacimiento = request.POST.get('txtFecNacimiento')
         mascota.descripcion = request.POST.get('txtDescripcion')
@@ -45,5 +47,12 @@ def regmascota(request):
         except:
             variables['mensaje'] = "No se ha podido guardar"
     return render(request, 'core/regmascota.html',variables)
+
+def listadoAdoptado(request):
+    adoptados = Mascota.objects.all()
+
+    return render( request, 'core/galeria.html', {
+        'adoptado': adoptados
+    })
 
 
