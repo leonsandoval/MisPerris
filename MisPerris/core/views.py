@@ -112,7 +112,7 @@ def modificar_mascota(request, id):
             messages.error(request, "No se ha podido actualizar")
 
         #le haremos un redirect al usuario de vuelta hacia el listado   
-        return redirect('regmascota')
+        return redirect(to='regmascota')
 
 
 

@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = "/"
+
+#con esta configuracion le decimos que una vez el usuario
+#haya cerrado sesion será devuelto a la página de login
+LOGOUT_REDIRECT_URL = "/accounts/login"
 
 # Application definition
 
@@ -39,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
     'accounts',
+    
 ]
 
 MIDDLEWARE = [
