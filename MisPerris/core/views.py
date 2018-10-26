@@ -4,13 +4,17 @@ from .models import *
 # Create your views here.
 
 def home(request):
-    return render(request, 'core/home.html')
+    perros = Mascota.objects.filter(estado=3)
+    return render(request, 'core/home.html', 
+    {
+    'adoptados':perros
+    })
 
 def galeria(request):
     perros = Mascota.objects.filter(estado=1)
     return render(request, 'core/galeria.html', 
     {
-    'adoptados':perros
+    'rescatados':perros
     })    
 
 def formulario(request): 

@@ -4,7 +4,16 @@
 
 {% block contenidoprincipal %}
 <div class="carousel carousel-slider">
-    <a class="carousel-item" href="#one!">
+    {% for m in adoptados %}
+    <a class="carousel-item" href="#{{m.id}}!">
+        <img src="{% static 'core/img/perris/adop/' %}{{m.foto}}">
+        <div class="slide-desc hide-on-small-only hide-on-med-only">
+            <h2>{{ m.nombre }}</h2>
+            <p>{{ m.descripcion }}</p>
+        </div>
+    </a>
+    {% endfor %}
+    {% comment %} <a class="carousel-item" href="#1!">
         <img src="{% static 'core/img/perris/adop/Apolo.jpg' %}">
         <div class="slide-desc hide-on-small-only hide-on-med-only">
             <h2>Mi querido Apolo</h2>
@@ -13,7 +22,7 @@
                 a nuestro Apolo. En realidad, así tenía que ser, el nos encontró y nosotros a el".</p>
         </div>
     </a>
-    <a class="carousel-item" href="#two!">
+    <a class="carousel-item" href="#2!">
         <img src="{% static 'core/img/perris/adop/Duque.jpg' %}">
         <div class="slide-desc hide-on-small-only hide-on-med-only">
             <h2>Duque el rey del hogar </h2>
@@ -24,7 +33,7 @@
                 alegría cada día. A él se le nota feliz y agradecido, con ganas de vivir a tope cada momento." </p>
         </div>
     </a>
-    <a class="carousel-item" href="#three!">
+    <a class="carousel-item" href="#3!">
         <img src="{% static 'core/img/perris/adop/Tom.jpg' %}">
          <div class="slide-desc hide-on-small-only hide-on-med-only">
             <h2>Tom!! Tom!! Tommy!! </h2>
@@ -32,7 +41,7 @@
                 hermana y a vosotros, que me disteis la oportunidad de adoptar la que es hoy una de las mejores compañías
                 que he tenido jamás. Os mando un abrazo y también alguna foto de mi pequeño."</p>
         </div>
-    </a>
+    </a> {% endcomment %}
 </div>
 
 {% endblock contenidoprincipal %}

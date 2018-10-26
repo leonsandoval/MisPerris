@@ -6,8 +6,8 @@
 
 <div class="container">
     <div class="row">
-    <h2>Mascotas adoptadas</h2>
-     {% for m in adoptados %}
+    <h2>Mascotas rescatadas</h2>
+     {% for m in rescatados %}
         <a class="col m4 s12 modal-trigger waves-green box-pets-galery-galery" href="#modal{{m.id}}">  
            <div class=" col s12 z-depth-2 box-pets-galery"> 
             <img class="responsive-img" src="{% static 'core/img/perris/resc/' %}{{m.foto}}" alt="my image" title="my image" />
