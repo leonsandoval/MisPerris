@@ -121,7 +121,7 @@ class Mascota(models.Model):
     fechaIngreso = models.DateField()
     fechaNacimiento = models.DateField(null=True)
     descripcion = models.CharField(max_length=200)
-    foto = models.ImageField(upload_to='pets')
+    foto = models.ImageField(upload_to='pets/')
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
     # rut_m = models.CharField(max_length=15)
     # edad = models.IntegerField()

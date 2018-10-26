@@ -22,6 +22,7 @@ def formulario(request):
     }
     return render(request, 'core/formulario.html', variables)
 
+# @login_required
 def regmascota(request):
     raza = Raza.objects.all()
     estado = Estado.objects.all()
@@ -36,7 +37,6 @@ def regmascota(request):
         raza.id = request.POST.get('cboRaza')
         mascota.raza = raza
         genero = request.POST.get('rbGenero')
-        print( genero )
         mascota.genero = genero
         mascota.fechaIngreso= request.POST.get('txtFecIngreso')
         mascota.fechaNacimiento = request.POST.get('txtFecNacimiento')

@@ -10,7 +10,6 @@ nav {
 }
 
 .slide-desc {
-
     z-index: 10;
     background: rgba(0,0,0,0.5);
     left: 6%;
@@ -91,4 +90,21 @@ nav {
 
 .mtop100 {
     margin-top: 70px;
+}
+
+.box-pets-galery {
+    padding: 5px;
+    padding-top: 10px;
+
+} 
+.box-pets-galery span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    padding: 5px;
+    color: #797979;
+}
+.box-pets-galery-galery {
+    margin-bottom:20px;
 }

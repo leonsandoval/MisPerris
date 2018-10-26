@@ -32,6 +32,8 @@ $(document).ready(function(){
     format:	'yyyy-mm-dd'
   });
   $('select').formSelect();
+
+  $('.modal').modal();
 });
 
 autoplay();
