@@ -108,3 +108,48 @@ nav {
 .box-pets-galery-galery {
     margin-bottom:20px;
 }
+
+/* === footer === */
+footer {
+    background: #808A86;
+    position: relative;
+    height: 150px;
+}
+/* .information {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    z-index: 1;
+} */
+h6.phone {
+    text-align: left;
+    padding: 14px 22px;
+    font-weight: 600;
+    color: #fff;
+}
+
+text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    position: relative;
+}
+.RRSS {
+    padding-left: 0;
+    text-align: right;
+}
+
+.RRSS li {
+    display: inline-block;
+    margin: 0 10px;
+}
+.RRSS li img {
+    width: 40px;
+}
+
+.copyright {
+    text-align: center;
+    color: white;
+    margin-top: 25px;
+}
