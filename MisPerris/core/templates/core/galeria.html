@@ -32,6 +32,8 @@
                             <li>Fecha de Nacimiento: {{m.fechaNacimiento}}</li>
                             <li>Genero: {{m.genero}}</li>
                             <li>Estado: {{m.estado}}</li>
+                            <a href="{% url 'eliminar' m.id %}">Eliminar</a>
+                            <a href="{% url 'modificar' m.id %}">Modificar</a>
                         </ul>
                     </p>
                     <hr>

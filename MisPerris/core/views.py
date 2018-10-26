@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import *
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -55,6 +57,62 @@ def regmascota(request):
         except:
             variables['mensaje'] = "No se ha podido guardar"
     return render(request, 'core/regmascota.html',variables)
+
+
+def eliminar(request, id):
+
+    #para eliminar es necesario primero buscar el automovil
+    perro = Mascota.objects.get(id=id)
+
+    #una vez encontrado el automovil se procede a eliminarlo
+    try:
+        auto.delete()
+        mensaje = "Eliminado correctamente"
+        messages.success(request, mensaje)
+    except:
+        mensaje ="No se ha podido eliminar"
+        messages.error(request, mensaje)
+        
+    #el redirect lo redirige por alias de una ruta
+    return redirect(to="galeria")
+
+def modificar_mascota(request, id):
+
+    raza = Raza.objects.all()
+    estado = Estado.objects.all()
+    #buscamos el automovil en la BBDD por su ID
+    perro = Mascota.objects.get(id=id)
+    variables = {
+        'raza':raza,
+        'estado':estado
+    }
+
+    if request.POST:
+        #si la peticion es POST recibimos las variables
+        mascota = Mascota()
+        mascota.nombre=request.POST.get('txtNombre')
+        raza = Raza()
+        raza.id = request.POST.get('cboRaza')
+        mascota.raza = raza
+        genero = request.POST.get('rbGenero')
+        mascota.genero = genero
+        mascota.fechaIngreso= request.POST.get('txtFecIngreso')
+        mascota.fechaNacimiento = request.POST.get('txtFecNacimiento')
+        mascota.descripcion = request.POST.get('txtDescripcion')
+        mascota.foto = request.POST.get('imgFoto')
+        estado = Estado()
+        estado.id = int(request.POST.get('cboEstado'))
+        mascota.estado= estado  
+
+        #ahora procederemos a actualizar el automovil
+        try:
+            auto.save()
+            messages.success(request, "Actualizado correctamente")
+        except:
+            messages.error(request, "No se ha podido actualizar")
+
+        #le haremos un redirect al usuario de vuelta hacia el listado   
+        return redirect('regmascota')
 
 
 
