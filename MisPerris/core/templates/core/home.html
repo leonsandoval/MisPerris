@@ -6,7 +6,7 @@
 <div class="carousel carousel-slider">
     {% for m in adoptados %}
     <a class="carousel-item" href="#{{m.id}}!">
-        <img src="{% static 'core/img/perris/adop/' %}{{m.foto}}">
+        <img src="{{m.foto.url}}">
         <div class="slide-desc hide-on-small-only hide-on-med-only">
             <h2>{{ m.nombre }}</h2>
             <p>{{ m.descripcion }}</p>
