@@ -29,7 +29,8 @@ $(document).ready(function(){
     indicators: true
   });
   $('.datepicker').datepicker({
-    format:	'yyyy-mm-dd'
+    format:	'yyyy-mm-dd',
+    language: 'es',
   });
   $('select').formSelect();
 

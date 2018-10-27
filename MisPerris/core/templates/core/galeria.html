@@ -22,6 +22,8 @@
                 </h4>
                 <div class="col m5 s12">
                     <img class="responsive-img" src="{% static 'core/img/perris/resc/' %}{{m.foto}}" alt="my image" title="my image" />
+               
+               
                 </div>
 
                 <div class="col m7 s12">
@@ -36,10 +38,15 @@
                                         Hembra
                                         {% endif %}</li>
                             <li>Estado: {{m.estado}}</li>
-                            <a href="{% url 'eliminar' m.id %}">Eliminar</a>
-                            <a href="{% url 'modificar' m.id %}">Modificar</a>
                         </ul>
                     </p>
+                    <a class="waves-effect waves-light btn" href="{% url 'eliminar' m.id %}">
+                    <i class="material-icons left">delete_forever</i>
+                    Eliminar</a>
+
+                    <a class="waves-effect waves-light btn" href="{% url 'modificar' m.id %}">
+                    <i class="material-icons left">mode_edit</i>
+                    Modificar</a>
                     <hr>
                     <h5>Descripción</h5>
                     <p>

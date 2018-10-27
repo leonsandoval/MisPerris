@@ -1,0 +1,152 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenidoprincipal %}
+<section class="container">
+    <div class="row">
+      {% csrf_token %}
+        <div class="subtitle-section col s12 m8 offset-m2">
+            <h3 class="grey-title">Registro de Mascota</h3>
+        </div>
+
+        <form  method="post" id="formulario1" class="contacto-form col s12 m8 offset-m2" action="">
+            {% csrf_token %}
+        <div class="input-field col s12">
+          <input name="txtNombre" id="txtNombre" type="text" class="validate" maxlength="50" value="{{m.nombre}}" >
+          <label for="txtNombre">Nombre</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+            <select id="cboEstado" name="cboEstado">
+                <option value="">Seleccionar</option>
+                {% for e in estado %}
+                    <option 
+                    {% if m.estado.id == e.id %}
+                    {{ 'selected' }}
+                    {% endif %}
+                    value="{{ e.id }}">{{ e.nombre }}</option>
+                {% endfor %}
+            </select>
+            <label for="cboEstado">Estado</label>
+        </div>
+        
+        <div class="input-field col s12 m6">
+            <select id="cboRaza" name="cboRaza">
+                <option value="">Seleccionar</option>
+                {% for r in raza %}
+                    <option 
+                    {% if m.raza.id == r.id %}
+                    {{ 'selected' }}
+                    {% endif %}
+                    value="{{ r.id }}">{{ r.nombre }}</option>
+                {% endfor %}
+            </select>
+            <label for="cboRaza">Raza</label>
+        </div>
+
+        <div class="col s12" style="margin-top: 1rem; margin-bottom: 1rem;">
+            <label class="col s6" >
+                <input class="with-gap" name="rbGenero" type="radio" value="1"/>
+                <span>Macho</span>
+            </label>
+            <label class="col s6">
+                <input class="with-gap" name="rbGenero" type="radio" value="2"/>
+                <span>Hembra</span>
+            </label>
+        </div>
+
+        <div class="input-field col s12 m6">
+            <input type="date" class="datepicker" name="txtFecIngreso" id="txtFecIngreso" value="{{m.fechaIngreso}}">
+            <label for="txtFecIngreso">Fecha de Ingreso</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+            <input type="date" class="datepicker" name="txtFecNacimiento" id="txtFecNacimiento" value="{{m.fechaNacimiento}}">
+            <label for="txtFecNacimiento">Fecha de Nacimiento</label>
+        </div>
+
+        <div class="input-field col s12">
+            <textarea id="txtDescripcion" name="txtDescripcion" class="materialize-textarea" maxlength="200" value="{{m.descripcion}}"></textarea>
+            <label for="txtDescripcion">Descripción</label>
+        </div>
+
+        <div class="file-field input-field col s12">
+            <div class="btn">
+                <span for="imgFoto"><i class="material-icons left"></i> Foto</span>
+                <input type="file" name="imgFoto" id="imgFoto" size="2mb" value="{{m.foto}}">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+
+        <button class="btn waves-effect waves-light" type="submit" name="btnGuardarM" id="btnGuardarM">Registrar
+            <i class="material-icons right">send</i>
+        </button>
+        <h3>{{ mensaje }}</h3>
+    </form>
+
+    </div>
+</section>
+   {% comment %} <section class="content">
+    {% csrf_token %}
+            <div class="subtitle-section">
+                <h3 class="grey-title">Registro de Mascota</h3>
+            </div>
+
+            <form  method="post" id="formulario1" class="contacto-form" action="">
+                {% csrf_token %}
+                <div class="campo">
+                    <label for="txtNombre">Nombre</label>
+                    <input type="text" name="txtNombre" id="txtNombre">
+                </div>
+                <div class="campo">
+                    <label for="">Raza</label>
+                    <select id="cboRaza" name="cboRaza">                   
+                        <option value="">Seleccionar</option>
+                        {% for r in raza %}
+                            <option value="{{ r.nombre }}">{{ r.nombre }}</option>
+                        {% endfor %}
+                    </select>                    
+                </div>
+                <div class="campo">
+                    <label for="rbGenero">Genero</label>
+                    <input type="radio" name="genero" value= "1">Macho
+                    <input type="radio" name="genero" value = "2">Hembra
+                </div>
+                <div class="campo">
+                    <label for="txtFecIngreso">Fecha de Ingreso</label>
+                    <input type="date" name="txtFecIngreso" id="txtFecIngreso">
+                </div>
+                <div class="campo">
+                    <label for="txtFecNacimiento">Fecha de Nacimiento</label>
+                    <input type="date" name="txtFecNacimiento" id="txtFecNacimiento">
+                </div>
+                <div class="campo">
+                    <label for="txtDescripcion">Descripcion</label>
+                    <input type="text" name="txtDescripcion" id="txtDescripcion">
+                </div>
+                <div class = "campo">
+                    <label for="imgFoto">foto</label>
+                    <input type="file" name="imgFoto" id="imgFoto" size="2mb">
+                </div>
+                <div class="campo">
+                    <label for="">Estado</label>
+                    <select id="cboEstado" name="cboEstado">                   
+                        <option value="">Seleccionar</option>
+                        {% for e in estado %}
+                            <option value="{{ e.id }}">{{ e.nombre }}</option>
+                        {% endfor %}
+                    </select>                    
+                </div>
+                <div class="btn-content">
+                    <input type="submit" value="Guardar" name="btnGuardarM" id="btnGuardarM">
+                </div>
+                <h3>{{ mensaje }}</h3>
+            </form>
+
+
+
+    </section> {% endcomment %}
+{% endblock contenidoprincipal %}
