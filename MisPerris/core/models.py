@@ -108,6 +108,7 @@ class Estado(models.Model):
         return self.nombre
 
 
+
 GENERO_RADIO = (
         (1,'Macho'),
         (2,'Hembra'),
@@ -121,7 +122,7 @@ class Mascota(models.Model):
     fechaIngreso = models.DateField()
     fechaNacimiento = models.DateField(null=True)
     descripcion = models.CharField(max_length=200)
-    foto = models.ImageField(upload_to='pets/')
+    foto = models.ImageField(upload_to='img/')
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
     # rut_m = models.CharField(max_length=15)
     # edad = models.IntegerField()

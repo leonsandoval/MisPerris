@@ -1,7 +1,9 @@
-from django.shortcuts import render
+import os
+from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 # Create your views here.
 
@@ -29,6 +31,8 @@ def formulario(request):
     return render(request, 'core/formulario.html', variables)
 
 # @login_required
+
+
 def regmascota(request):
     raza = Raza.objects.all()
     estado = Estado.objects.all()
@@ -36,6 +40,7 @@ def regmascota(request):
         'raza':raza,
         'estado':estado
     }
+    
     if request.POST:
         mascota = Mascota()
         mascota.nombre=request.POST.get('txtNombre')
@@ -47,16 +52,19 @@ def regmascota(request):
         mascota.fechaIngreso= request.POST.get('txtFecIngreso')
         mascota.fechaNacimiento = request.POST.get('txtFecNacimiento')
         mascota.descripcion = request.POST.get('txtDescripcion')
-        mascota.foto = request.POST.get('imgFoto')
+        mascota.foto =  request.FILES.get('imgFoto')
         estado = Estado()
         estado.id = int(request.POST.get('cboEstado'))
         mascota.estado= estado  
+        mascota.save() 
+
         try:
-            mascota.save()            
+                       
             variables['mensaje'] = "Guardado correctamente"
         except:
             variables['mensaje'] = "No se ha podido guardar"
     return render(request, 'core/regmascota.html',variables)
+
 
 
 def eliminar(request, id):

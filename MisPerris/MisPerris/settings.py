@@ -33,7 +33,27 @@ LOGIN_REDIRECT_URL = "/"
 #haya cerrado sesion será devuelto a la página de login
 LOGOUT_REDIRECT_URL = "/accounts/login"
 
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+MEDIA_URL = '/media/'
+
 # Application definition
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                # ... the rest of your context_processors goes here ...
+                'django.template.context_processors.media',
+            ],
+         },
+    },
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',

@@ -1,3 +1,7 @@
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 """MisPerris URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -27,3 +31,7 @@ urlpatterns = [
 admin.site.site_header = "Administracion Mis Perris"
 admin.site.index_title = "Mis Perris"
 admin.site.site_title = "Administracion Mis Perris"
+
+
+if settings.DEBUG is True:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

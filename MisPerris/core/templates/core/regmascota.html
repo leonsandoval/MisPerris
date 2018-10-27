@@ -10,7 +10,7 @@
             <h3 class="grey-title">Registro de Mascota</h3>
         </div>
 
-        <form  method="post" id="formulario1" class="contacto-form col s12 m8 offset-m2" action="">
+        <form  method="post" id="formulario1" class="contacto-form col s12 m8 offset-m2" action="" enctype="multipart/form-data">
             {% csrf_token %}
         <div class="input-field col s12">
           <input name="txtNombre" id="txtNombre" type="text" class="validate" maxlength="50">
