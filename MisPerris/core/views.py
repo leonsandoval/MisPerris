@@ -1,4 +1,3 @@
-import os
 from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
@@ -84,7 +83,7 @@ def eliminar(request, id):
     #el redirect lo redirige por alias de una ruta
     return redirect(to="galeria")
 
-def modificar_mascota(request, id):
+def modificar(request, id):
 
     raza = Raza.objects.all()
     estado = Estado.objects.all()
@@ -92,11 +91,13 @@ def modificar_mascota(request, id):
     mascota = Mascota.objects.get(id=id)
     variables = {
         'raza':raza,
-        'estado':estado
+        'estado':estado,
+        'm': mascota
     }
 
     if request.POST:
         #si la peticion es POST recibimos las variables
+        mascota.id = id
         mascota = Mascota()
         mascota.nombre=request.POST.get('txtNombre')
         raza = Raza()
@@ -120,7 +121,7 @@ def modificar_mascota(request, id):
             messages.error(request, "No se ha podido actualizar")
 
         #le haremos un redirect al usuario de vuelta hacia el listado   
-        return redirect(to='regmascota')
+    return render(request, 'core/modificar.html', variables)
 
 
 

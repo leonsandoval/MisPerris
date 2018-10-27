@@ -10,6 +10,5 @@ urlpatterns = [
     path('formulario/', formulario, name="formulario"),
     path('regmascota/', regmascota, name="regmascota"),
     path('eliminar/<id>/', eliminar, name="eliminar"),
-    path('regmascota/<id>/', regmascota, name="modificar"),
+    path('modificar/<id>/', modificar, name="modificar"),
 ]
-

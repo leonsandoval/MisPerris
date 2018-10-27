@@ -26,10 +26,9 @@
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down hide-on-small-only hide-on-med-only">
                 <li><a href="/">Inicio</a></li>
-                <li><a href="">Quienes somos</a></li>
                 <li><a href="/galeria">Galeria</a></li>
+                {% if request.user.is_authenticated %}
                 <li><a href="/regmascota">Registra tu mascota</a></li>
-                {% if request.user.is_autenticated %}
                 <li><a href="{% url 'logout'  %}">Cerrar Sesion</a></li>
                 {% else %}
                  <li>
@@ -38,7 +37,6 @@
                 <li>
                     <a href="{% url 'login' %}">Login</a>
                 </li>
-               
                 {% endif %}
             </ul>
             </div>
