@@ -11,6 +11,7 @@
         </div>
 
         <form  method="post" id="formulario1" class="contacto-form col s12 m8 offset-m2" action="">
+        <input type="hidden" name="txtId" id="txtId" value="{{ mascota.id }}" >
             {% csrf_token %}
         <div class="input-field col s12">
           <input name="txtNombre" id="txtNombre" type="text" class="validate" maxlength="50" value="{{m.nombre}}" >
@@ -46,12 +47,21 @@
         </div>
 
         <div class="col s12" style="margin-top: 1rem; margin-bottom: 1rem;">
+            {% if m.genero.id == mascota.genero.id %}
+                    {{ 'checked' }}
+            {% endif %}
+            
+            
             <label class="col s6" >
-                <input class="with-gap" name="rbGenero" type="radio" value="1"/>
+                <input class="with-gap" name="rbGenero" type="radio" value="1" {% if m.genero.id == mascota.genero.id %}
+                    {{ "checked" }}
+            {% endif %} />
                 <span>Macho</span>
             </label>
             <label class="col s6">
-                <input class="with-gap" name="rbGenero" type="radio" value="2"/>
+                <input class="with-gap" name="rbGenero" type="radio" value="2"  {% if m.genero.id == mascota.genero.id %}
+                    {{ "checked" }}
+            {% endif %}/>
                 <span>Hembra</span>
             </label>
         </div>
