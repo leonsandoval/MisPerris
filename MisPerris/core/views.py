@@ -55,10 +55,9 @@ def regmascota(request):
         estado = Estado()
         estado.id = int(request.POST.get('cboEstado'))
         mascota.estado= estado  
-        mascota.save() 
-
+         
         try:
-                       
+            mascota.save()         
             variables['mensaje'] = "Guardado correctamente"
         except:
             variables['mensaje'] = "No se ha podido guardar"
