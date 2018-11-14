@@ -3,6 +3,7 @@ from .models import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django_xhtml2pdf.utils import pdf_decorator
 
 # Create your views here.
 
@@ -122,6 +123,12 @@ def modificar(request, id):
         #le haremos un redirect al usuario de vuelta hacia el listado   
     return render(request, 'core/modificar.html', variables)
 
+@pdf_decorator(pdfname="perros.pdf")
+def perro_pdf(request):
+    perros = Mascota.objects.all()
 
+    return render(request, 'core/perro_pdf.html', {
+        'perros':perros
+    })
 
 

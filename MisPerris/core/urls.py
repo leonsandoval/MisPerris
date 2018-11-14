@@ -11,4 +11,5 @@ urlpatterns = [
     path('regmascota/', regmascota, name="regmascota"),
     path('eliminar/<id>/', eliminar, name="eliminar"),
     path('modificar/<id>/', modificar, name="modificar"),
+    path('perro_pdf/', perro_pdf, name = "perro_pdf"),
 ]

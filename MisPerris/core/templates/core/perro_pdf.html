@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mascotas</title>
+    <style>
+        h2 {
+            color:rgb(0, 128, 75);
+        }
+
+        .tabla {
+            width: 120px;
+
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>Informe perros</h2>
+
+    
+    <ul>
+        <li>Raza:  {{m.raza}} </li>
+        <li>Fecha de Nacimiento: {{m.fechaNacimiento}}</li>
+        <li>Genero: {% if m.genero == 1 %}
+                    Macho
+                    {% else %}
+                    Hembra
+                    {% endif %}</li>
+        <li>Estado: {{m.estado}}</li>
+    </ul>
+<div style="page-break-after: always"></div>
+<h2>mensaje</h2>
+</body>
+</html>
