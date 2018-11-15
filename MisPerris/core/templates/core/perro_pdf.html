@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <title>Mascotas</title>
     <style>
         h2 {
-            color:rgb(0, 128, 75);
+            color: rgb(0, 128, 75);
         }
 
         .tabla {
@@ -16,22 +17,49 @@
         }
     </style>
 </head>
+
 <body>
-    
+
     <h2>Informe perros</h2>
 
-    
-    <ul>
-        <li>Raza:  {{m.raza}} </li>
-        <li>Fecha de Nacimiento: {{m.fechaNacimiento}}</li>
-        <li>Genero: {% if m.genero == 1 %}
-                    Macho
-                    {% else %}
-                    Hembra
-                    {% endif %}</li>
-        <li>Estado: {{m.estado}}</li>
-    </ul>
-<div style="page-break-after: always"></div>
-<h2>mensaje</h2>
+    <h2>Mascotas rescatadas</h2>
+
+
+    <table class="tabla">
+            <tr>
+                <td>Nombre</td>
+                <td>Raza</td>
+                <td>Fecha de Nacimiento</td>
+                <td>Genero</td>
+                <td>Estado</td>
+                <td>Descripción</td>
+                
+            </tr>
+            {# por cada fila de la BBDD creamos una fila de la tabla #}
+            {% for p in perros %}
+        
+            <tr>
+                <td>{{p.nombre}}</td>
+                <td>{{p.raza}}</td>
+                <td>{{p.fechaNacimiento}}</td>
+                <!-- <td>{{p.genero }}</td> -->
+                <td> {% if p.genero == '1' %}
+                        Macho
+                        {% else %}
+                        Hembra
+                        {% endif %}</td>
+                <td>{{p.estado}}</td>
+                <td>{{p.descripcion}}</td>
+            </tr>
+        
+            {% endfor %}
+        </table>
+
+
+    <div style="page-break-after: always"></div>
+
+
+
 </body>
+
 </html>

@@ -69,6 +69,8 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'accounts',
     'social_django',
+    'api',
+    # 'pwa',
     
 ]
 
