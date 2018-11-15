@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core import serializers
 from django.http import HttpResponse, HttpResponseBadRequest
 import json
-from core.models import Mascota
+from core.models import *
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 
@@ -31,13 +31,13 @@ def agregar_mascota(request):
     #ingresamos los datos a la BBDD
     mascota = Mascota()
     mascota.nombre = body_diccionario['nombre']
-    mascota.raza = body_diccionario['raza']
+    mascota.raza = Raza(id=body_diccionario['raza'])
     mascota.genero = body_diccionario['genero']
     mascota.fechaIngreso = body_diccionario['fechaIngreso']
     mascota.fechaNacimiento = body_diccionario['fechaNacimiento']
     mascota.descripcion = body_diccionario['descripcion']
     mascota.foto = body_diccionario['foto']
-    mascota.estado = body_diccionario['estado']
+    mascota.estado = Estado(id=body_diccionario['estado'])
 
 
     try:
@@ -65,10 +65,15 @@ def modificar_mascota(request):
     #ingresamos los datos a la BBDD
     mascota = Mascota()
     mascota.id = body_diccionario['id']
-    #mascota.patente = body_diccionario['patente']
-    mascota.modelo = body_diccionario['modelo']
-    mascota.anio = body_diccionario['anio']
-    mascota.marca = Marca(id=body_diccionario['marca_id'])
+    mascota.nombre = body_diccionario['nombre']
+    mascota.raza = Raza(id=body_diccionario['raza'])
+    mascota.genero = body_diccionario['genero']
+    mascota.fechaIngreso = body_diccionario['fechaIngreso']
+    mascota.fechaNacimiento = body_diccionario['fechaNacimiento']
+    mascota.descripcion = body_diccionario['descripcion']
+    mascota.foto = body_diccionario['foto']
+    mascota.estado = Estado(id=body_diccionario['estado'])
+
 
     try:
         mascota.save()
