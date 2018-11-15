@@ -27,7 +27,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('oauth/', include('social_django.urls', namespace='social')),
     path('api/', include('api.urls')),
-    # path('', include('pwa.urls')),
+    path('', include('pwa.urls')), 
 ]
 
 #nombre del admin
