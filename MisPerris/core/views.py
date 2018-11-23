@@ -97,8 +97,7 @@ def modificar(request, id):
 
     if request.POST:
         #si la peticion es POST recibimos las variables
-        mascota.id = id
-        mascota = Mascota()
+        mascota = Mascota.objects.get(id=int(request.POST.get('txtId')))
         mascota.nombre=request.POST.get('txtNombre')
         raza = Raza()
         raza.id = request.POST.get('cboRaza')
@@ -108,7 +107,8 @@ def modificar(request, id):
         mascota.fechaIngreso= request.POST.get('txtFecIngreso')
         mascota.fechaNacimiento = request.POST.get('txtFecNacimiento')
         mascota.descripcion = request.POST.get('txtDescripcion')
-        mascota.foto = request.POST.get('imgFoto')
+        if request.FILES.get('imgFoto'):
+            mascota.foto = request.FILES.get('imgFoto')
         estado = Estado()
         estado.id = int(request.POST.get('cboEstado'))
         mascota.estado= estado  
@@ -116,12 +116,13 @@ def modificar(request, id):
         #ahora procederemos a actualizar el automovil
         try:
             mascota.save()
-            messages.success(request, "Actualizado correctamente")
+            variables['mensaje'] = "Actualizado correctamente"
         except:
-            messages.error(request, "No se ha podido actualizar")
+            variables['mensaje'] = "No se ha podido actualizar"
 
         #le haremos un redirect al usuario de vuelta hacia el listado   
     return render(request, 'core/modificar.html', variables)
+
 
 @pdf_decorator(pdfname="perros.pdf")
 def perro_pdf(request):

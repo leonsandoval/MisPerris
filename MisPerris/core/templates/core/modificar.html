@@ -10,9 +10,11 @@
             <h3 class="grey-title">Registro de Mascota</h3>
         </div>
 
-        <form  method="post" id="formulario1" class="contacto-form col s12 m8 offset-m2" action="">
-        <input type="hidden" name="txtId" id="txtId" value="{{ mascota.id }}" >
-            {% csrf_token %}
+        <form  method="post" id="formulario1" class="contacto-form col s12 m8 offset-m2" action="" enctype="multipart/form-data">
+        <input type="hidden" name="txtId" id="txtId" value="{{ m.id }}" >
+           
+        {% csrf_token %}
+            
         <div class="input-field col s12">
           <input name="txtNombre" id="txtNombre" type="text" class="validate" maxlength="50" value="{{m.nombre}}" >
           <label for="txtNombre">Nombre</label>
@@ -47,19 +49,18 @@
         </div>
 
         <div class="col s12" style="margin-top: 1rem; margin-bottom: 1rem;">
-            {% if m.genero.id == mascota.genero.id %}
-                    {{ 'checked' }}
-            {% endif %}
             
             
             <label class="col s6" >
-                <input class="with-gap" name="rbGenero" type="radio" value="1" {% if m.genero.id == mascota.genero.id %}
+                <input class="with-gap" name="rbGenero" type="radio" value="1"
+                 {% if m.genero == '1' %}
                     {{ "checked" }}
             {% endif %} />
                 <span>Macho</span>
             </label>
             <label class="col s6">
-                <input class="with-gap" name="rbGenero" type="radio" value="2"  {% if m.genero.id == mascota.genero.id %}
+                <input class="with-gap" name="rbGenero" type="radio" value="2"  
+                {% if m.genero == '2' %}
                     {{ "checked" }}
             {% endif %}/>
                 <span>Hembra</span>
@@ -67,20 +68,20 @@
         </div>
 
         <div class="input-field col s12 m6">
-            <input type="date" class="datepicker" name="txtFecIngreso" id="txtFecIngreso" value="{{m.fechaIngreso}}">
+            <input type="date" class="datepicker" name="txtFecIngreso" id="txtFecIngreso" value="{{m.fechaIngresoCL}}">
             <label for="txtFecIngreso">Fecha de Ingreso</label>
         </div>
 
         <div class="input-field col s12 m6">
-            <input type="date" class="datepicker" name="txtFecNacimiento" id="txtFecNacimiento" value="{{m.fechaNacimiento}}">
+            <input type="date" class="datepicker" name="txtFecNacimiento" id="txtFecNacimiento" value="{{m.fechaNacimientoCL}}">
             <label for="txtFecNacimiento">Fecha de Nacimiento</label>
         </div>
 
         <div class="input-field col s12">
-            <textarea id="txtDescripcion" name="txtDescripcion" class="materialize-textarea" maxlength="200" value="{{m.descripcion}}"></textarea>
+            <textarea id="txtDescripcion" name="txtDescripcion" class="materialize-textarea" maxlength="200" >{{m.descripcion}}</textarea>
             <label for="txtDescripcion">Descripción</label>
         </div>
-
+        
         <div class="file-field input-field col s12">
             <div class="btn">
                 <span for="imgFoto"><i class="material-icons left"></i> Foto</span>

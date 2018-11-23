@@ -133,7 +133,11 @@ class Mascota(models.Model):
     # chip = models.BooleanField()
     # n_chip = models.IntegerField()
     # tipo = models.CharField(max_length=50)
-
+    def fechaNacimientoCL(self):
+        return self.fechaNacimiento.strftime("%Y-%m-%d")
+    
+    def fechaIngresoCL(self):
+        return self.fechaIngreso.strftime("%Y-%m-%d")
 
 class AtencionMascota(models.Model):
     fecha = models.DateField()
